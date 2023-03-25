@@ -1,6 +1,6 @@
 from PyQt5 import QtGui, QtWidgets
 from driver import mistic
-from find_neighbors import shp_neighbors
+from processing.find_neighbors import shp_neighbors
 from coreRegion import core_analysis
 
 import sys
@@ -66,14 +66,16 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
             print("Manual")
 
     def browse_In(self):
-        directory = QtWidgets.QFileDialog.getExistingDirectory(self, "Pick a folder")
+        directory = QtWidgets.QFileDialog.getExistingDirectory(
+            self, "Pick a folder")
         # print directory
         if directory:
             self.le_InputFile.setText(directory)
             self.InputFile = str(directory)
 
     def browse_Out(self):
-        directory = QtWidgets.QFileDialog.getExistingDirectory(self, "Pick a folder")
+        directory = QtWidgets.QFileDialog.getExistingDirectory(
+            self, "Pick a folder")
         # print directory
         if directory:
             self.le_OutputFile.setText(directory)
@@ -83,7 +85,8 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         # Change to File Chooser
         # directory = QtWidgets.QFileDialog.getExistingDirectory(self,"Pick a folder")
 
-        filename = QtWidgets.QFileDialog.getOpenFileName(self, "Pick a file")[0]
+        filename = QtWidgets.QFileDialog.getOpenFileName(self, "Pick a file")[
+            0]
         print(filename)
         if filename:
             self.le_SpNeighbor.setText(filename)
