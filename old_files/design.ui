@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>755</width>
+    <height>566</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="frame1">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="page1">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <layout class="QFormLayout" name="formLayout">
+             <item row="0" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Area of Interest</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_AreaOfInt"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="p1blank1">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>No of Spatial Units</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_SpUnits"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="p1blank2">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>No of Time Units</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_TimeUnits"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="p1blank3">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>Start Year</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_StartYear"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="p1blank4">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string>End Year</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_EndYear"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="p1blank5">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="btn_Next1">
+             <property name="text">
+              <string>Next</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+          <zorder>layoutWidget</zorder>
+          <zorder>btn_Next1</zorder>
+         </widget>
+         <widget class="QWidget" name="page3">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string>Path to input files</string>
+             </property>
+             <widget class="QWidget" name="layoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>40</y>
+                <width>531</width>
+                <height>33</height>
+               </rect>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QLineEdit" name="le_InputFile"/>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_BrowseIn">
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>Path to output files</string>
+             </property>
+             <widget class="QWidget" name="layoutWidget_5">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>40</y>
+                <width>531</width>
+                <height>33</height>
+               </rect>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLineEdit" name="le_OutputFile"/>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_BrowseOut">
+                 <property name="text">
+                  <string>Browse</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="btn_Back1">
+             <property name="text">
+              <string>Back</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="btn_Next2">
+             <property name="text">
+              <string>Next</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page2">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>Preferred mode of Input for Spatial Neighbours</string>
+             </property>
+             <widget class="QRadioButton" name="radio_Shapefile">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>40</y>
+                <width>97</width>
+                <height>18</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Shapefile</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="radio_Point">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>97</width>
+                <height>18</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Point Data</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="radio_Manual">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>100</y>
+                <width>97</width>
+                <height>18</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Manual</string>
+              </property>
+             </widget>
+             <widget class="QWidget" name="layoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>140</y>
+                <width>551</width>
+                <height>56</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>Path to corresponding file</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item>
+                  <widget class="QLineEdit" name="le_SpNeighbor"/>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_BrowseNbh">
+                   <property name="text">
+                    <string>Browse</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="btn_Back2">
+             <property name="text">
+              <string>Back</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="btn_Start">
+             <property name="text">
+              <string>Start MiSTIC</string>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+             <property name="default">
+              <bool>true</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page4">
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>Initial threshold frequency</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="le_itf"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="p4blank5">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;( Default is 0 )&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="radio_Cc">
+             <property name="text">
+              <string>CC Only</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="radio_Cr">
+             <property name="text">
+              <string>CR Only</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="radio_Both">
+             <property name="text">
+              <string>Both CC &amp;&amp; CR</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Minimum Support</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="le_MinSup"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="p4blank1">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="5" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>CR Radius</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="le_CrRadius"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="p4blank4">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="6" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Max Prune</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="le_MaxPrune"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="p4blank2">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="7" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Min Frequency</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="le_MinFreq"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="p4blank3">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ff0000;&quot;&gt;Field cannot be left blank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="8" column="1">
+            <widget class="QPushButton" name="btn_Back3">
+             <property name="text">
+              <string>Back</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QPushButton" name="btn_Next3">
+             <property name="text">
+              <string>Next</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>le_AreaOfInt</tabstop>
+  <tabstop>le_SpUnits</tabstop>
+  <tabstop>le_TimeUnits</tabstop>
+  <tabstop>le_StartYear</tabstop>
+  <tabstop>le_EndYear</tabstop>
+  <tabstop>btn_Next1</tabstop>
+  <tabstop>radio_Shapefile</tabstop>
+  <tabstop>radio_Point</tabstop>
+  <tabstop>radio_Manual</tabstop>
+  <tabstop>le_SpNeighbor</tabstop>
+  <tabstop>btn_BrowseNbh</tabstop>
+  <tabstop>btn_Back2</tabstop>
+  <tabstop>le_InputFile</tabstop>
+  <tabstop>btn_BrowseIn</tabstop>
+  <tabstop>le_OutputFile</tabstop>
+  <tabstop>btn_BrowseOut</tabstop>
+  <tabstop>btn_Back1</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
