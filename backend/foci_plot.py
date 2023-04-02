@@ -30,10 +30,12 @@ def plot_foci(filePath, outputPath, foci, zone, lat, long, year):
     fig, ax = plt.subplots(figsize=(15, 15))
     zones.boundary.plot(ax=ax, alpha=0.7, color=map_df['color'])
     foci_df.plot(ax=ax)
+    plt.axis('off')
     plt.savefig(os.path.join(outputPath, f'boundaries_{year}.png'),
                 bbox_inches='tight')
     ax.clear()
     map_df.plot(ax=ax, alpha=0.7, color=map_df['color'])
     foci_df.plot(ax=ax)
+    plt.axis('off')
     plt.savefig(os.path.join(outputPath, f'zones_{year}.png'),
                 bbox_inches='tight')

@@ -13,16 +13,6 @@ OUTPUT_FOLDER = os.path.join(os.path.dirname(
     os.path.realpath(__name__)), 'output')
 
 
-def check_csv(csvPath):
-    csv_fileh = open(csvPath, 'r')
-    try:
-        dialect = csv.Sniffer().sniff(csv_fileh.read(1024))
-        csv_fileh.seek(0)
-        return True
-    except csv.Error:
-        return False
-
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
