@@ -11,7 +11,11 @@ try:
 except:
     import gdalconst
 import os
-import csv
+import geopandas as gpd
+
+
+def getXY(pt):
+    return (pt.x, pt.y)
 
 
 def getLocation(filePath):
@@ -30,4 +34,4 @@ def getLocation(filePath):
     return location
 
 
-# getLocation("../shapefile/district.shp")
+getLocation("../old_files/shapefile/district.shp")

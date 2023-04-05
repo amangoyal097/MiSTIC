@@ -7,6 +7,7 @@ interface Data {
   startYear: string
   endYear: string
   type: string
+  outputProj: string
   shpFile: File | undefined
 }
 
@@ -15,9 +16,10 @@ const MisticForm: React.FC<{
   setImages: React.Dispatch<React.SetStateAction<any>>
 }> = ({ handleNext, setImages }) => {
   const [data, setData] = React.useState<Data>({
-    startYear: '',
-    endYear: '',
+    startYear: '2001',
+    endYear: '2010',
     type: 'Max',
+    outputProj: '3577',
     shpFile: undefined,
   })
   const [validating, setValidating] = React.useState<boolean>(false)
@@ -41,6 +43,7 @@ const MisticForm: React.FC<{
       validateNumber(request.startYear) &&
       validateNumber(request.endYear) &&
       validateGreater(request.startYear, request.endYear) &&
+      validateNumber(request.outputProj) &&
       request.shpFile
     )
   }
@@ -53,6 +56,7 @@ const MisticForm: React.FC<{
     formData.append('startYear', request.startYear)
     formData.append('endYear', request.endYear)
     formData.append('type', request.type)
+    formData.append('outputProj', request.outputProj)
     formData.append('file', request.shpFile!)
 
     const config = {
@@ -63,8 +67,8 @@ const MisticForm: React.FC<{
       .post('http://localhost:5000/mistic', formData, config)
       .then((response) => {
         setImages({
-          boundary: response.data.result[1],
-          zones: response.data.result[0],
+          boundary: response.data.results[1],
+          zones: response.data.results[0],
         })
         setLoading(false)
         handleNext()
@@ -138,6 +142,21 @@ const MisticForm: React.FC<{
           </Grid>
         </Grid>
         <Grid item xs={12}>
+          <TextField
+            required
+            label="Output EPSG no."
+            type="number"
+            fullWidth
+            variant="standard"
+            value={data.outputProj}
+            error={validating && !validateNumber(data.outputProj)}
+            helperText={
+              validating && !validateNumber(data.endYear) && 'Invalid value'
+            }
+            onChange={(e) => setData({ ...data, outputProj: e.target.value })}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} sm={6}>
               {data.shpFile ? data.shpFile.name : 'No File Selected'}
@@ -175,5 +194,4 @@ const MisticForm: React.FC<{
     </React.Fragment>
   )
 }
-
 export default MisticForm

@@ -20,40 +20,25 @@ import collections
 import csv
 
 
-def shp_neighbors(NeighborFile, userFile):
-    with open(userFile) as f:
-        ind = 1
-        nbhd = {}
-        for line in f:
-            nbhd[ind] = []
-            neighbors = line.split(",")
-            for n in neighbors:
-                if (n.isnumeric()):
-                    nbhd[ind].append(int(n))
-            ind += 1
-        return nbhd
-    # vector_ds = ogr.Open(NeighborFile, gdalconst.GA_ReadOnly)
-    # vector_layer = vector_ds.GetLayer()
+def shp_neighbors(vector_layer):
+    feature_count = vector_layer.GetFeatureCount()
+    nbhd = {}
 
-    # feature_count = vector_layer.GetFeatureCount()
+    for i in range(0, feature_count):
 
-    # nbhd = {}
+        feature1 = vector_layer.GetFeature(i)
+        district1 = i + 1
+        geom1 = feature1.GetGeometryRef()
+        nbhd[district1] = []
 
-    # for i in range(0, feature_count):
+        for j in range(0, feature_count):
+            if i == j:
+                continue
 
-    #     feature1 = vector_layer.GetFeature(i)
-    #     district1 = i + 1
-    #     geom1 = feature1.GetGeometryRef()
-    #     nbhd[district1] = []
+            feature2 = vector_layer.GetFeature(j)
+            district2 = j + 1
+            geom2 = feature2.GetGeometryRef()
 
-    #     for j in range(0, feature_count):
-    #         if i == j:
-    #             continue
-
-    #         feature2 = vector_layer.GetFeature(j)
-    #         district2 = j + 1
-    #         geom2 = feature2.GetGeometryRef()
-
-    #         if geom2.Intersects(geom1):
-    #             nbhd[district1].append(district2)
-    # return nbhd
+            if geom2.Intersects(geom1):
+                nbhd[district1].append(district2)
+    return nbhd

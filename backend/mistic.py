@@ -10,8 +10,8 @@ except:
     import gdalconst
 import operator
 from collections import Counter
-from make_point import generate_point_layer
-from foci_plot import plot_foci
+from write_output import writeOutputs
+from utils import reprojectLayer
 
 
 def sign(a):
@@ -100,24 +100,26 @@ def process_year(year, vectorLayer, location, neighbors, type):
     validFoci = find_valid_foci(zone)
     lat = []
     long = []
-    for f in validFoci:
+    for f in foci:
         lat.append(location[f][1])
         long.append(location[f][0])
-    # generate_point_layer(lat, long)
     return foci, zone, lat, long
 
 
-def mistic(filePath, outputPath, neighborsPath, startYear, endYear, type):
+def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
+
+    reprojectLayer(filePath, outputProj)
+
     vectorDs = ogr.Open(filePath, gdalconst.GA_ReadOnly)
     vectorLayer = vectorDs.GetLayer()
 
     location = getLocation(filePath)
-    neighbors = shp_neighbors(filePath, neighborsPath)
+    neighbors = shp_neighbors(vectorLayer)
 
     for year in range(startYear, endYear + 1):
         foci, zone, lat, long = process_year(
             year, vectorLayer, location, neighbors, type)
-        plot_foci(filePath, outputPath, foci, zone, lat, long, year)
+        writeOutputs(filePath, outputPath, foci, zone, lat, long, year)
         break
 
 
