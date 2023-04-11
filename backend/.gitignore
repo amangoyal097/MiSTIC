@@ -1,5 +1,5 @@
 output/
 input/
-config.json
-coreOutputs.zip
-outputs.zip
+/config.json
+/coreOutputs.zip
+/outputs.zip
