@@ -12,6 +12,7 @@ except:
     import gdalconst
 import os
 import geopandas as gpd
+import json
 
 
 def getXY(pt):
@@ -31,7 +32,9 @@ def getLocation(filePath):
         location[count] = [geo.GetX(), geo.GetY()]
         feature = ly.GetNextFeature()
         count += 1
+    with open("config.json", "r") as f:
+        data = json.load(f)
+    with open("config.json", "w") as f:
+        data['loc'] = location
+        json.dump(data, f)
     return location
-
-
-getLocation("../old_files/shapefile/district.shp")

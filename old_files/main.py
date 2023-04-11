@@ -1,6 +1,5 @@
 from PyQt5 import QtGui, QtWidgets
 from driver import mistic
-from processing.find_neighbors import shp_neighbors
 from coreRegion import core_analysis
 
 import sys
@@ -236,9 +235,10 @@ class ExampleApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
     def process_Shapefile(self, filename):
         """Process shapefile to generate neighbors (separate fn not needed)"""
+        pass
         # selected filename should be a .shp file
         # Call find_neighbors.py and generate neighbors.csv in 'In' path
-        shp_neighbors(filename, self.InputFile)
+        # shp_neighbors(filename, self.InputFile)
 
     def process_Point(self, filename):
         """Process Point Data to Voronoi Polygons"""

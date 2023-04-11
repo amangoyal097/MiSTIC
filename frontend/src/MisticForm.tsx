@@ -1,7 +1,6 @@
 import React from 'react'
 import { Grid, Button, MenuItem, TextField } from '@mui/material'
 import axios from 'axios'
-import { FaxRounded } from '@mui/icons-material'
 import Loading from './Loading'
 interface Data {
   startYear: string
@@ -66,10 +65,7 @@ const MisticForm: React.FC<{
     axios
       .post('http://localhost:5000/mistic', formData, config)
       .then((response) => {
-        setImages({
-          boundary: response.data.results[1],
-          zones: response.data.results[0],
-        })
+        setImages(response.data.results)
         setLoading(false)
         handleNext()
       })

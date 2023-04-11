@@ -12,6 +12,7 @@ import operator
 from collections import Counter
 from write_output import writeOutputs
 from utils import reprojectLayer
+import json
 
 
 def sign(a):
@@ -103,7 +104,7 @@ def process_year(year, vectorLayer, location, neighbors, type):
     for f in foci:
         lat.append(location[f][1])
         long.append(location[f][0])
-    return foci, zone, lat, long
+    return foci, zone, lat, long, validFoci, zoneUnits
 
 
 def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
@@ -116,11 +117,24 @@ def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
     location = getLocation(filePath)
     neighbors = shp_neighbors(vectorLayer)
 
+    valid_foci_yr = []
+    zone_units_yr = []
+    foci_yr = []
+
     for year in range(startYear, endYear + 1):
-        foci, zone, lat, long = process_year(
+        foci, zone, lat, long, validFoci, zoneUnits = process_year(
             year, vectorLayer, location, neighbors, type)
+        foci_yr.append(foci)
+        valid_foci_yr.append(validFoci)
+        zone_units_yr.append(zoneUnits)
         writeOutputs(filePath, outputPath, foci, zone, lat, long, year)
-        break
+    with open("config.json", "r") as f:
+        data = json.load(f)
+    with open("config.json", "w") as f:
+        data['valid_foci'] = valid_foci_yr
+        data['zone_units'] = zone_units_yr
+        data['foci'] = foci_yr
+        json.dump(data, f)
 
 
 # mistic("../shapefile/district.shp", 2001, 2010)

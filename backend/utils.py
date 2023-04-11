@@ -48,7 +48,12 @@ def get_response_image(image_path):
 def get_images():
     result = os.listdir(OUTPUT_FOLDER)
     encoded_images = []
+    response = {}
     for image_path in result:
         if image_path.endswith('.png'):
-            encoded_images.append(get_response_image(image_path))
-    return encoded_images
+            type = image_path.split("_")[0]
+            year = image_path.split("_")[-1].split(".")[0]
+            if year not in response:
+                response[year] = {}
+            response[year][type] = get_response_image(image_path)
+    return response

@@ -1,23 +1,7 @@
 #!/usr/bin/env python
-import pandas as pd
 
 """ Find neighboring polygons for each polygon """
-
-try:
-    from osgeo import gdal
-except:
-    import gdal
-try:
-    from osgeo import ogr
-except:
-    import ogr
-try:
-    from osgeo import gdalconst
-except:
-    import gdalconst
-
-import collections
-import csv
+import json
 
 
 def shp_neighbors(vector_layer):
@@ -41,4 +25,10 @@ def shp_neighbors(vector_layer):
 
             if geom2.Intersects(geom1):
                 nbhd[district1].append(district2)
+    with open("config.json", "r") as f:
+        data = json.load(f)
+    with open("config.json", "w") as f:
+        data['nbhd'] = nbhd
+        data['featureCount'] = feature_count
+        json.dump(data, f)
     return nbhd

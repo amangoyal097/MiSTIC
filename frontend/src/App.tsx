@@ -37,16 +37,15 @@ const theme = createTheme({
 })
 
 interface Images {
-  boundary: string
-  zones: string
+  [key: string]: {
+    boundaries: ''
+    zones: ''
+  }
 }
 
 export default function App() {
   const [activeStep, setActiveStep] = React.useState(0)
-  const [images, setImages] = React.useState<Images>({
-    boundary: '',
-    zones: '',
-  })
+  const [images, setImages] = React.useState<Images>()
 
   const handleNext = () => {
     setActiveStep(activeStep + 1)
@@ -91,7 +90,7 @@ export default function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
