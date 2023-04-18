@@ -1,1 +1,6 @@
 __pycache__/
+output/
+upload/
+/config.json
+/coreOutputs.zip
+/outputs.zip
