@@ -18,6 +18,7 @@ def reprojectLayer(filePath, outputProj):
     df = gpd.read_file(filePath)
     df = df.to_crs(epsg=outputProj)
     df.to_file(filePath)
+    return df
 
 
 def allowed_file(filename):

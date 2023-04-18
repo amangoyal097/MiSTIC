@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import MisticForm from './MisticForm'
 import MisticOutput from './MisticOutputs'
+import CoreAnalysisInput from './CoreAnalysisInput'
+import CoreAnalysisOutput from './CoreAnalysisOutput'
 
 function Copyright() {
   return (
@@ -28,7 +30,12 @@ function Copyright() {
   )
 }
 
-const steps = ['MiSTIC Input', 'MiSTIC Outputs']
+const steps = [
+  'MiSTIC Input',
+  'MiSTIC Outputs',
+  'Core Analysis Input',
+  'Core Analysis Output',
+]
 
 const theme = createTheme({
   typography: {
@@ -55,6 +62,10 @@ export default function App() {
     setActiveStep(activeStep - 1)
   }
 
+  const handleReset = () => {
+    setActiveStep(0)
+  }
+
   function getStepContent(step: number) {
     switch (step) {
       case 0:
@@ -65,6 +76,17 @@ export default function App() {
             handleNext={handleNext}
             images={images}
             handleBack={handleBack}
+          />
+        )
+      case 2:
+        return (
+          <CoreAnalysisInput handleBack={handleBack} handleNext={handleNext} />
+        )
+      case 3:
+        return (
+          <CoreAnalysisOutput
+            handleBack={handleBack}
+            handleReset={handleReset}
           />
         )
       default:

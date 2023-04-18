@@ -26,7 +26,7 @@ const MisticOutput: React.FC<{
   }
 
   return (
-    <Grid container spacing={3} mb={3} alignItems="center">
+    <Grid container spacing={2} mb={3} alignItems="center">
       {images && (
         <Grid item xs={12}>
           <Carousel
@@ -95,26 +95,6 @@ const MisticOutput: React.FC<{
           </Carousel>
         </Grid>
       )}
-      {/* <Grid item xs={12}>
-        <img
-          src={
-            images.boundary !== ''
-              ? `data:image/jpeg;base64,${images.boundary}`
-              : undefined
-          }
-          style={{ width: '100%' }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <img
-          src={
-            images.zones !== ''
-              ? `data:image/jpeg;base64,${images.zones}`
-              : undefined
-          }
-          style={{ width: '100%' }}
-        />
-      </Grid> */}
       <Grid item xs={12}>
         <Button fullWidth variant="contained" onClick={() => getOutputs()}>
           Download shapefiles and images
@@ -122,16 +102,16 @@ const MisticOutput: React.FC<{
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={12}>
+          <Grid item xs={12} sm={6}>
             <Button fullWidth variant="outlined" onClick={() => handleBack()}>
               Back
             </Button>
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
-            <Button variant="contained" fullWidth onClick={() => handleNext()}>
+          <Grid item xs={12} sm={6}>
+            <Button fullWidth variant="contained" onClick={() => handleNext()}>
               Next
             </Button>
-          </Grid> */}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

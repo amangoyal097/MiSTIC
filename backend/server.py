@@ -65,23 +65,28 @@ def run_mistic():
 @cross_origin()
 def run_core_analysis():
     print("Core request received")
+    params = request.form.to_dict()
     with open("config.json", "r") as f:
         data = json.load(f)
-    itf = 0
-    min_Support = 1
     core_analysis(OUTPUT_FOLDER, int(data['startYear']),
-                  int(data['endYear']), itf, min_Support, 3, 3, 3, 0, data)
+                  int(data['endYear']), int(params['itf']), int(params['minSupport']), 3, 3, 3, 0, data)
     try:
         os.remove("coreOutputs.zip")
     except:
         pass
     with ZipFile('coreOutputs.zip', 'w') as zipObj:
         zipObj.write(
-            OUTPUT_FOLDER + "/initial_ref_foci_{}.csv".format(itf), "initial_ref_foci.csv")
+            OUTPUT_FOLDER + "/initial_ref_foci_{}.csv".format(params['itf']), "initial_ref_foci.csv")
         zipObj.write(OUTPUT_FOLDER +
-                     "/ccInfo_{}.csv".format(min_Support), "ccInfo.csv")
+                     "/ccInfo_{}.csv".format(params['minSupport']), "ccInfo.csv")
         zipObj.write(OUTPUT_FOLDER +
-                     "/core_zone_influence_{}.csv".format(min_Support), "core_zone_influence.csv")
+                     "/core_zone_influence_{}.csv".format(params['minSupport']), "core_zone_influence.csv")
+    return "success"
+
+
+@app.route('/getCoreOutputs', methods=['GET'])
+@cross_origin()
+def get_core_outputs():
     return send_file(os.path.join(os.getcwd(), 'coreOutputs.zip'), as_attachment=True)
 
 

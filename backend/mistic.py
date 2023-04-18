@@ -1,13 +1,5 @@
 from find_neighbors import shp_neighbors
 from getLocation import getLocation
-try:
-    from osgeo import ogr
-except:
-    import ogr
-try:
-    from osgeo import gdalconst
-except:
-    import gdalconst
 import operator
 from collections import Counter
 from write_output import writeOutputs
@@ -89,12 +81,10 @@ def find_valid_foci(zone_Year):
     return vf
 
 
-def process_year(year, vectorLayer, location, neighbors, type):
-    featureCount = vectorLayer.GetFeatureCount()
+def process_year(year, layer, location, neighbors, type):
     values = [-1]
-    for i in range(featureCount):
-        feature = vectorLayer.GetFeature(i)
-        values.append(float(feature.GetField(str(year))))
+    for index, poly in layer.iterrows():
+        values.append(int(poly[str(year)]))
     directions = mark_directions(values, neighbors, type)
     foci = find_foci(directions)
     zone, zoneUnits = create_zone(directions, foci)
@@ -109,13 +99,10 @@ def process_year(year, vectorLayer, location, neighbors, type):
 
 def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
 
-    reprojectLayer(filePath, outputProj)
+    layer = reprojectLayer(filePath, outputProj)
 
-    vectorDs = ogr.Open(filePath, gdalconst.GA_ReadOnly)
-    vectorLayer = vectorDs.GetLayer()
-
-    location = getLocation(filePath)
-    neighbors = shp_neighbors(vectorLayer)
+    location = getLocation(layer)
+    neighbors = shp_neighbors(layer)
 
     valid_foci_yr = []
     zone_units_yr = []
@@ -123,7 +110,7 @@ def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
 
     for year in range(startYear, endYear + 1):
         foci, zone, lat, long, validFoci, zoneUnits = process_year(
-            year, vectorLayer, location, neighbors, type)
+            year, layer, location, neighbors, type)
         foci_yr.append(foci)
         valid_foci_yr.append(validFoci)
         zone_units_yr.append(zoneUnits)
@@ -135,6 +122,3 @@ def mistic(filePath, outputPath, outputProj, startYear, endYear, type):
         data['zone_units'] = zone_units_yr
         data['foci'] = foci_yr
         json.dump(data, f)
-
-
-# mistic("../shapefile/district.shp", 2001, 2010)

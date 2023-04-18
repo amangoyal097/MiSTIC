@@ -4,31 +4,18 @@
 import json
 
 
-def shp_neighbors(vector_layer):
-    feature_count = vector_layer.GetFeatureCount()
+def shp_neighbors(gdf):
     nbhd = {}
-
-    for i in range(0, feature_count):
-
-        feature1 = vector_layer.GetFeature(i)
-        district1 = i + 1
-        geom1 = feature1.GetGeometryRef()
-        nbhd[district1] = []
-
-        for j in range(0, feature_count):
-            if i == j:
-                continue
-
-            feature2 = vector_layer.GetFeature(j)
-            district2 = j + 1
-            geom2 = feature2.GetGeometryRef()
-
-            if geom2.Intersects(geom1):
-                nbhd[district1].append(district2)
+    for index, poly in gdf.iterrows():
+        neighbors = [
+            ind + 1 for ind in gdf[~gdf.geometry.disjoint(poly.geometry)].index.tolist()]
+        if index + 1 in neighbors:
+            neighbors.remove(index + 1)
+        nbhd[index + 1] = neighbors
     with open("config.json", "r") as f:
         data = json.load(f)
     with open("config.json", "w") as f:
         data['nbhd'] = nbhd
-        data['featureCount'] = feature_count
+        data['featureCount'] = len(gdf)
         json.dump(data, f)
     return nbhd
